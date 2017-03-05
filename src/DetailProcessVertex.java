@@ -1,7 +1,6 @@
 
-public class DetailProcessVertex {
+public class DetailProcessVertex implements Comparable {
     private String name;
-    private boolean visited;
     DetailProcessVertex predecessor;
 
     public DetailProcessVertex(String name) {
@@ -16,14 +15,6 @@ public class DetailProcessVertex {
         this.name = name;
     }
 
-    public boolean isVisited() {
-        return visited;
-    }
-
-    public void setVisited(boolean visited) {
-        this.visited = visited;
-    }
-
     public DetailProcessVertex getPredecessor() {
         return predecessor;
     }
@@ -36,8 +27,15 @@ public class DetailProcessVertex {
     public String toString() {
         return "DetailProcessVertex{" +
                 "name='" + name + '\'' +
-                ", visited=" + visited +
-                ", predecessor=" + predecessor +
                 '}';
+    }
+
+    @Override
+    public int compareTo(Object o) {
+       if (this.toString().equals(o.toString())) {
+           return 0;
+       } else {
+           return 1;
+       }
     }
 }
