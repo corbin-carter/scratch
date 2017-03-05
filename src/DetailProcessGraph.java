@@ -5,7 +5,7 @@ public class DetailProcessGraph {
 
     public DetailProcessGraph(List<DetailProcessVertex> processList) {
         for (DetailProcessVertex vertex : processList) {
-            myGraph.put(vertex.getName(), new ArrayList<>());
+            myGraph.put(vertex.getName(), new ArrayList<DetailProcessEdge>());
         }
     }
 
@@ -16,6 +16,29 @@ public class DetailProcessGraph {
 
     public List<DetailProcessEdge> getEdgeList(String processName) {
         return myGraph.get(processName);
+    }
+
+    public void breadthFirstTraverse(DetailProcessVertex origin) {
+        Set<DetailProcessVertex> vertexSet = new HashSet<>();
+        Queue<DetailProcessVertex> vertexQueue = new PriorityQueue<>();
+
+        origin.setPredecessor(null);
+        vertexSet.add(origin);
+        vertexQueue.add(origin);
+
+        while (!vertexQueue.isEmpty()) {
+            DetailProcessVertex currentVertex = vertexQueue.remove();
+
+            for (DetailProcessEdge edge : getEdgeList(currentVertex.getName())) {
+                DetailProcessVertex vertex = edge.getDestination();
+                System.out.println(vertex);
+                if (!vertexSet.contains(vertex)) {
+                    vertexSet.add(vertex);
+                    vertex.setPredecessor(currentVertex);
+                    vertexQueue.add(vertex);
+                }
+            }
+        }
     }
 
     public String toString() {
@@ -61,6 +84,7 @@ public class DetailProcessGraph {
         myGraph.addEdge(process3.getName(), edge_3_4);
         myGraph.addEdge(process3.getName(), edge_3_5);
 
-        System.out.print(myGraph.toString());
+        //System.out.print(myGraph.toString());
+        myGraph.breadthFirstTraverse(process1);
     }
 }
