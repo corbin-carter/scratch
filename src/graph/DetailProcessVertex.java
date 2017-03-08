@@ -1,10 +1,13 @@
+package graph;
 
 public class DetailProcessVertex implements Comparable {
     private String name;
+    private int scrap;
     DetailProcessVertex predecessor;
 
-    public DetailProcessVertex(String name) {
+    public DetailProcessVertex(String name, int scrap) {
         this.name = name;
+        this.scrap = scrap;
     }
 
     public String getName() {
@@ -13,6 +16,14 @@ public class DetailProcessVertex implements Comparable {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public int getScrap() {
+        return scrap;
+    }
+
+    public void setScrap(int scrap) {
+        this.scrap = scrap;
     }
 
     public DetailProcessVertex getPredecessor() {
@@ -25,8 +36,9 @@ public class DetailProcessVertex implements Comparable {
 
     @Override
     public String toString() {
-        return "DetailProcessVertex{" +
+        return "graph.DetailProcessVertex{" +
                 "name='" + name + '\'' +
+                "scrap='" + scrap + '\'' +
                 '}';
     }
 

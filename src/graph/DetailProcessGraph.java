@@ -1,3 +1,5 @@
+package graph;
+
 import java.util.*;
 
 public class DetailProcessGraph {
@@ -82,12 +84,12 @@ public class DetailProcessGraph {
     }
 
     public static void main(String args[]) {
-        DetailProcessVertex process1 = new DetailProcessVertex("p1");
-        DetailProcessVertex process2 = new DetailProcessVertex("p2");
-        DetailProcessVertex process3 = new DetailProcessVertex("p3");
-        DetailProcessVertex process4 = new DetailProcessVertex("p4");
-        DetailProcessVertex process5 = new DetailProcessVertex("p5");
-        DetailProcessVertex process6 = new DetailProcessVertex("p6");
+        DetailProcessVertex process1 = new DetailProcessVertex("p1", 1);
+        DetailProcessVertex process2 = new DetailProcessVertex("p2", 1);
+        DetailProcessVertex process3 = new DetailProcessVertex("p3", 1);
+        DetailProcessVertex process4 = new DetailProcessVertex("p4", 1);
+        DetailProcessVertex process5 = new DetailProcessVertex("p5", 1);
+        DetailProcessVertex process6 = new DetailProcessVertex("p6", 1);
 
         List<DetailProcessVertex> processList = new ArrayList<>();
         processList.add(process1);
@@ -116,8 +118,8 @@ public class DetailProcessGraph {
         myGraph.addEdge(process4.getName(), edge_4_6);
 
         //System.out.print(myGraph.toString());
-        System.out.print("DFS: \n");
-        myGraph.depthFirstTraversal(process1);
+        //System.out.print("DFS: \n");
+        //myGraph.depthFirstTraversal(process1);
 
         System.out.print("BFS: \n");
         myGraph.breadthFirstTraversal(process1);
